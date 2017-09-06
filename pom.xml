@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>crayfish</artifactId>
+        <groupId>com.sftwnd.crayfish</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.sftwnd.crayfish.examples</groupId>
+    <artifactId>crayfish-examples</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>crayfish-example-amqp</module>
+        <module>crayfish-example-default</module>
+        <module>crayfish-example-derbyserver-ucp</module>
+        <module>crayfish-example-feign</module>
+        <module>crayfish-example-feign-authorization</module>
+        <module>crayfish-example-java</module>
+        <module>crayfish-example-jdbc</module>
+        <module>crayfish-example-logging</module>
+        <module>crayfish-example-oracle-ucp</module>
+        <module>crayfish-example-spring-parameters</module>
+        <module>crayfish-example-ucp</module>
+        <module>crayfish-examples-akka</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sftwnd.crayfish</groupId>
+            <artifactId>crayfish-utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sftwnd.crayfish</groupId>
+            <artifactId>crayfish-appl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+</project>

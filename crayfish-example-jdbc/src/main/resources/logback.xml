@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- <include resource="org/springframework/boot/logging/logback/base.xml" /> -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- Log SCMessage format -->
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%green(%date{ISO8601}) [%32thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>500</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="STDOUT" />
+    </appender>
+
+    <logger name="com.sftwnd.crayfish.akka.appl.ActorSystemConfiguration"                 level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.sftwnd.crayfish.akka.amqp.AmqpConnectionActor"                      level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.sftwnd.crayfish.amqp.consume.DefaultAmqpConsumer"                   level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.sftwnd.crayfish.amqp"                                               level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.sftwnd.crayfish.jdbc"                                               level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.sftwnd.crayfish"                                                    level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+
+    <logger name="javax.management"                                                       level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="org.springframework"                                                    level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="oracle.ucp"                                                             level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="org.springframework.context.support.PostProcessorRegistrationDelegate"  level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="org.springframework.beans.GenericTypeAwarePropertyDescriptor"           level="off"   additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.zaxxer.hikari.HikariDataSource"                                     level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.zaxxer.hikari"                                                      level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="sun.rmi"                                                                level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+
+    <!-- root -->
+    <root level="TRACE">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

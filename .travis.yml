@@ -1,0 +1,7 @@
+language: java
+before_install:
+  - echo "<settingsSecurity><master>$MAVEN_MASTER_PASSWORD</master></settingsSecurity>">$HOME/.m2/settings-security.xml
+  - cp .travis.settings.xml $HOME/.m2/settings.xml
+script: mvn clean compile package -X
+jdk: oraclejdk8
+os: linux

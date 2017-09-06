@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>crayfish-examples-akka</artifactId>
+        <groupId>com.github.sftwnd.crayfish.examples.akka</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.sftwnd.crayfish.examples.akka.http</groupId>
+    <artifactId>crayfish-examples-akka-http</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>crayfish-examples-akka-http-client</module>
+    </modules>
+
+</project>
