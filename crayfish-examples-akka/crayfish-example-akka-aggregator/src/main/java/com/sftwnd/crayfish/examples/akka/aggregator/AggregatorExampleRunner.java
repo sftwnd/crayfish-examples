@@ -6,7 +6,7 @@ import akka.actor.PoisonPill;
 import akka.actor.Props;
 import akka.actor.Terminated;
 import akka.actor.UntypedAbstractActor;
-import com.sftwnd.crayfish.akka.pattern.aggregation.AggregatorFSM;
+import com.github.sftwnd.crayfish.akka.pattern.aggregation.AggregatorFSM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

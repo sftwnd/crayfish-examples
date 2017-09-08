@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.github.sftwnd.crayfish.examples</groupId>
+        <groupId>com.github.sftwnd.crayfish.crayfish-examples</groupId>
         <artifactId>crayfish-examples</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -13,23 +13,23 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sftwnd.crayfish</groupId>
+            <groupId>com.github.sftwnd.crayfish</groupId>
             <artifactId>crayfish-appl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.sftwnd.crayfish</groupId>
+            <groupId>com.github.sftwnd.crayfish</groupId>
             <artifactId>crayfish-amqp</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.sftwnd.crayfish.spring</groupId>
+            <groupId>com.github.sftwnd.crayfish.crayfish-spring</groupId>
             <artifactId>crayfish-spring-amqp</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.sftwnd.crayfish.junit</groupId>
-            <artifactId>crayfish-amqp-junit</artifactId>
+            <groupId>com.github.sftwnd.crayfish.crayfish-junit</groupId>
+            <artifactId>crayfish-junit-amqp</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

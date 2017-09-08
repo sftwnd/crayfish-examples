@@ -17,12 +17,12 @@
     </appender>
 
     <logger name="sun.rmi"                                                  level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish.akka.appl.ActorSystemConfiguration"   level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish.akka.amqp.AmqpConnectionActor"        level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish.amqp.consume.DefaultAmqpConsumer"     level="info" additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish.amqp"                                 level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish.jdbc"                                 level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish"                                      level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.akka.appl.ActorSystemConfiguration"   level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.akka.amqp.AmqpConnectionActor"        level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.amqp.consume.DefaultAmqpConsumer"     level="info" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.amqp"                                 level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.jdbc"                                 level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish"                                      level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
 
     <logger name="javax.management"                                         level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
     <logger name="org.springframework"                                      level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>

@@ -4,8 +4,8 @@ import akka.actor.ActorPaths;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import com.sftwnd.crayfish.akka.utils.ActorSystemTermination;
-import com.sftwnd.crayfish.akka.utils.GuaranteeAwaitRoute;
+import com.github.sftwnd.crayfish.akka.utils.ActorSystemTermination;
+import com.github.sftwnd.crayfish.akka.utils.GuaranteeAwaitRoute;
 import com.typesafe.config.ConfigFactory;
 
 import java.util.concurrent.CountDownLatch;

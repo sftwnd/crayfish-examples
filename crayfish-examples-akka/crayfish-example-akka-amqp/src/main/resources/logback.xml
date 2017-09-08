@@ -18,9 +18,9 @@
 
     <logger name="sun.rmi"                                              level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
     <logger name="com.github.sftwnd.crayfish.examples"                       level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish.akka.amqp"                      level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish.akka.amqp.AmqpConnectionActor"  level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
-    <logger name="com.sftwnd.crayfish"                                level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.akka.amqp"                      level="trace" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.akka.amqp.AmqpConnectionActor"  level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish"                                level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
 
     <logger name="javax.management"                                     level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
     <logger name="org.springframework"                                  level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>

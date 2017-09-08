@@ -2,7 +2,7 @@ package com.github.sftwnd.crayfish.examples.akka.hotswap;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
-import com.sftwnd.crayfish.akka.spring.di.SpringExtension;
+import com.github.sftwnd.crayfish.akka.spring.di.SpringExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

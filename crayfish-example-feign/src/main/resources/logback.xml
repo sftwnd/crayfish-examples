@@ -16,7 +16,7 @@
         <appender-ref ref="STDOUT" />
     </appender>
 
-    <logger name="com.sftwnd.crayfish"                                                    level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish"                                                    level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
 
     <logger name="javax.management"                                                       level="info"  additivity="false"><appender-ref ref="STDOUT"/></logger>
     <logger name="org.springframework"                                                    level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>

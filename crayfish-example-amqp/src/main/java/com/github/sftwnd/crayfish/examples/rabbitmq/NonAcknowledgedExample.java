@@ -1,9 +1,9 @@
 package com.github.sftwnd.crayfish.examples.rabbitmq;
 
-import com.sftwnd.crayfish.amqp.consume.ConvertableAmqpConsumer;
-import com.sftwnd.crayfish.amqp.consume.DefaultAMQPMessageConverter;
-import com.sftwnd.crayfish.amqp.message.AMQPMessage;
-import com.sftwnd.crayfish.amqp.message.AMQPMessagePayload;
+import com.github.sftwnd.crayfish.amqp.consume.ConvertableAmqpConsumer;
+import com.github.sftwnd.crayfish.amqp.consume.DefaultAMQPMessageConverter;
+import com.github.sftwnd.crayfish.amqp.message.AMQPMessage;
+import com.github.sftwnd.crayfish.amqp.message.AMQPMessagePayload;
 import com.rabbitmq.client.BlockedListener;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

@@ -2,7 +2,7 @@ package com.github.sftwnd.crayfish.examples.akka.mgmtactor;
 
 import akka.actor.AbstractFSM;
 import akka.actor.ActorRef;
-import com.sftwnd.crayfish.akka.spring.di.SpringExtension;
+import com.github.sftwnd.crayfish.akka.spring.di.SpringExtension;
 import com.github.sftwnd.crayfish.examples.akka.mgmtactor.event.NodeRegisterEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

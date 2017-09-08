@@ -1,7 +1,7 @@
 package com.github.sftwnd.crayfish.examples.akka.amqp;
 
 import akka.actor.ActorSystem;
-import com.sftwnd.crayfish.embedded.amqp.qpid.EmbeddedMessageBroker;
+import com.github.sftwnd.crayfish.embedded.amqp.qpid.EmbeddedMessageBroker;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -40,7 +40,7 @@ public class AmqpExampleRunner implements CommandLineRunner {
     @Autowired
     ActorSystem actorSystem;
 
-    @Value("${com.sftwnd.crayfish.amqp.local.port:5672}")
+    @Value("${com.github.sftwnd.crayfish.amqp.local.port:5672}")
     private int port;
 
     private volatile EmbeddedMessageBroker embeddedMessageBroker = null;

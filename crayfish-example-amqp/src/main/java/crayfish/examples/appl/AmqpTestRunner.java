@@ -1,6 +1,6 @@
 package crayfish.examples.appl;
 
-import com.sftwnd.crayfish.embedded.amqp.qpid.EmbeddedMessageBroker;
+import com.github.sftwnd.crayfish.embedded.amqp.qpid.EmbeddedMessageBroker;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

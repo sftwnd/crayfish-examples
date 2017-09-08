@@ -1,6 +1,6 @@
-import com.sftwnd.crayfish.amqp.consume.DefaultAmqpConsumer;
-import com.sftwnd.crayfish.amqp.message.AMQPMessage;
-import com.sftwnd.crayfish.amqp.message.AMQPMessageTag;
+import com.github.sftwnd.crayfish.amqp.consume.DefaultAmqpConsumer;
+import com.github.sftwnd.crayfish.amqp.message.AMQPMessage;
+import com.github.sftwnd.crayfish.amqp.message.AMQPMessageTag;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

@@ -77,8 +77,8 @@
         <appender-ref ref="ADMINOPS" />
     </appender>
 
-    <!-- <logger name="com.sftwnd.crayfish"  level="info"  additivity="false"><appender-ref ref="ASYNC-DEFAULT"/><appender-ref ref="ASYNC-USEROPS"/><appender-ref ref="ASYNC-ADMINOPS"/><appender-ref ref="MY"/></logger> -->
-    <logger name="com.sftwnd.crayfish"  level="info"  additivity="false"><appender-ref ref="MY"/></logger>
+    <!-- <logger name="com.github.sftwnd.crayfish"  level="info"  additivity="false"><appender-ref ref="ASYNC-DEFAULT"/><appender-ref ref="ASYNC-USEROPS"/><appender-ref ref="ASYNC-ADMINOPS"/><appender-ref ref="MY"/></logger> -->
+    <logger name="com.github.sftwnd.crayfish"  level="info"  additivity="false"><appender-ref ref="MY"/></logger>
 
     <!-- root -->
     <root level="INFO">

@@ -4,23 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>crayfish-examples</artifactId>
-        <groupId>com.github.sftwnd.crayfish.examples</groupId>
+        <groupId>com.github.sftwnd.crayfish.crayfish-examples</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.sftwnd.crayfish.examples</groupId>
     <artifactId>crayfish-example-derbyserver-ucp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
-            <groupId>com.sftwnd.crayfish.spring</groupId>
+            <groupId>com.github.sftwnd.crayfish.crayfish-spring</groupId>
             <artifactId>crayfish-spring-datasource-ucp</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.sftwnd.crayfish.crayfish-embedded</groupId>
+            <groupId>com.github.sftwnd.crayfish.crayfish-embedded</groupId>
             <artifactId>crayfish-embedded-derby</artifactId>
             <version>${project.version}</version>
         </dependency>
