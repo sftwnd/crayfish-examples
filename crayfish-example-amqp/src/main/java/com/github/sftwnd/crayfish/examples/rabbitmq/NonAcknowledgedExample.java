@@ -109,7 +109,7 @@ public class NonAcknowledgedExample {
                 }
             });
 
-            Thread.sleep(1000000L);
+            Thread.sleep(15000L);
             logger.info("{}", map);
 
 
