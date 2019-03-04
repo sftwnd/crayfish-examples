@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.sftwnd.crayfish</groupId>
+        <artifactId>crayfish-core</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.github.sftwnd.crayfish.examples</groupId>
+    <artifactId>crayfish-examples</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>CrayFish :: EXAMPLES</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>crayfish-example-zookeeper</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish.common</groupId>
+            <artifactId>crayfish-common-exception</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish.common</groupId>
+            <artifactId>crayfish-common-utl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish.common</groupId>
+            <artifactId>crayfish-common-concurrent</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
