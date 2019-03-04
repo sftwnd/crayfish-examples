@@ -90,6 +90,18 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
+                <!-- Sonatype Repository -->
+                <repository>
+                    <id>sonatype-nexus-snapshots</id>
+                    <name>Sonatype Nexus Repository</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
                 <!-- ================= -->
             </repositories>
             <pluginRepositories>
