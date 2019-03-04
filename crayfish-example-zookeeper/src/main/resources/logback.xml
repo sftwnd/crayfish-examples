@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- <include resource="org/springframework/boot/logging/logback/base.xml" /> -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- Log SCMessage format -->
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%green(%date{ISO8601}) [%32thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.github.sftwnd.crayfish.examples.zookeeper.Dotter"                      level="warn"    additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.examples.zookeeper.Dotter" level="info" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.zookeeper.concurrent.ZookeeperLockService"      level="off"    additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.zookeeper.concurrent.ZookeeperReentantLock"     level="off"    additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.zookeeper.concurrent.ZookeeperLockHelper"       level="off"    additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd.crayfish.common.concurrent.RevocableReentantLockHelper"  level="off"    additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <!--
+    <logger name="org.apache.zookeeper"                                                      level="off"    additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="org.apache.curator"                                                        level="off"    additivity="false"><appender-ref ref="STDOUT"/></logger>
+     -->
+    <logger name="org.apache.curator"                                                        level="off"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="org.apache"                                                                level="error"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.github.sftwnd"                                                         level="info"   additivity="false"><appender-ref ref="STDOUT"/></logger>
+
+    <!-- root -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
