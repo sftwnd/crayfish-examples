@@ -41,6 +41,7 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
+                <!--
                 <repository>
                     <id>netflixoss-releases</id>
                     <name>NetflixOSS Releases</name>
@@ -50,6 +51,7 @@
                         <updatePolicy>never</updatePolicy>
                     </releases>
                 </repository>
+                -->
                 <repository>
                     <id>maven.oracle.com</id>
                     <name>oracle-maven-repo</name>
@@ -63,6 +65,32 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
+                <!-- Spring Repository -->
+                <repository>
+                    <id>spring-snapshots</id>
+                    <name>Spring Snapshots</name>
+                    <url>http://repo.spring.io/libs-snapshot-local</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>spring-milestones</id>
+                    <name>Spring Milestones</name>
+                    <url>http://repo.spring.io/libs-milestone-local</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>spring-releases</id>
+                    <name>Spring Releases</name>
+                    <url>http://repo.spring.io/release</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <!-- ================= -->
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
