@@ -11,5 +11,12 @@
 
     <artifactId>crayfish-example-logging</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish</groupId>
+            <artifactId>crayfish-utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

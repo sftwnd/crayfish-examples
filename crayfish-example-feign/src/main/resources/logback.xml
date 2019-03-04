@@ -23,6 +23,9 @@
     <logger name="org.springframework.context.support.PostProcessorRegistrationDelegate"  level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>
     <logger name="org.springframework.beans.GenericTypeAwarePropertyDescriptor"           level="off"   additivity="false"><appender-ref ref="STDOUT"/></logger>
     <logger name="sun.rmi"                                                                level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="sun.net"                                                                level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.netflix.loadbalancer"                                               level="warn"  additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="com.netflix.config"                                                     level="error" additivity="false"><appender-ref ref="STDOUT"/></logger>
 
     <!-- root -->
     <root level="TRACE">

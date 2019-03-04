@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Profile;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ConnectionCallback;
@@ -29,12 +30,15 @@ public class DerbyJdbcTemplateTestRunner implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(DerbyJdbcTemplateTestRunner.class);
 
     @Autowired
+    ApplicationContext applicationContext;
+
+    @Autowired
     @Qualifier(value = "dataSource")
     DataSource dataSource;
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("{}[derbytest.com.github.sftwnd.crayfish.examples.derbyserver.DerbyJdbcTemplateTestRunner] has been started.", this.getClass().getSimpleName());
+        logger.info("{} has been started.", this.getClass().getSimpleName());
         final CountDownLatch latch = new CountDownLatch(1);
         new JdbcTemplate(dataSource).execute(new ConnectionCallback<Object>() {
             @Override

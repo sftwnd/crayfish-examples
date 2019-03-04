@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 /**
@@ -43,7 +44,7 @@ public class AmqpTestRunner implements CommandLineRunner {
         logger.info("Start embeded Message Queue Broker");
         EmbeddedMessageBroker embeddedMessageBroker = new EmbeddedMessageBroker(AMQP.PROTOCOL.PORT);
         try {
-            embeddedMessageBroker.startUp();
+              embeddedMessageBroker.startUp();
 
             logger.info("Connect to local AMQP service");
 
@@ -72,7 +73,7 @@ public class AmqpTestRunner implements CommandLineRunner {
             }
         } finally {
             try {
-                embeddedMessageBroker.tearDown();
+                  embeddedMessageBroker.tearDown();
             } catch (Throwable ex) {
                 logger.error("Unable to tearDown embeddedMessageBroker");
             }

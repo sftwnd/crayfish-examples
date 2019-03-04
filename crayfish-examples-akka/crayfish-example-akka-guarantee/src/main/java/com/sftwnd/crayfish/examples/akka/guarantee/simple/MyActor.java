@@ -1,4 +1,4 @@
-package com.github.sftwnd.crayfish.examples.akka.guarantee.simple;
+package com.sftwnd.crayfish.examples.akka.guarantee.simple;
 
 import akka.actor.UntypedAbstractActor;
 import org.slf4j.Logger;

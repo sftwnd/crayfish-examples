@@ -9,6 +9,7 @@ import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class Main {
 
@@ -39,6 +40,22 @@ public class Main {
             logger.info(userMarker, "User operation N");
         } finally {
             MDC.clear();
+        }
+
+        Map<String, String> mdcContextMap = MDC.getCopyOfContextMap();
+        try {
+            MDC.put("admin", "root-1");
+            Map<String, String> mdcContextMap1 = MDC.getCopyOfContextMap();
+            MDC.put("user", String.valueOf(1112003));
+            logger.info(userMarker, "User operation U+L1");
+            logger.info("Current 1 MDC:user = {}, MDC:admin:{}", MDC.get("user"), MDC.get("admin"));
+            MDC.setContextMap(mdcContextMap1);
+            logger.info(userMarker, "User operation U+L 2");
+            logger.info("Current 2 MDC:user = {}, MDC:admin:{}", MDC.get("user"), MDC.get("admin"));
+
+        } finally {
+            if (mdcContextMap == null) MDC.clear(); else MDC.setContextMap(mdcContextMap);
+            logger.info("Current MDC:user = {}", MDC.get("user"));
         }
 
         ILoggerFactory loggerFactory = LoggerFactory.getILoggerFactory();

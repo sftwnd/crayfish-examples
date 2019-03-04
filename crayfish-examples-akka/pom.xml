@@ -18,10 +18,14 @@
         <module>crayfish-example-akka-hotswap</module>
         <module>crayfish-example-akka-amqp</module>
         <module>crayfish-example-akka-deadletter</module>
+        <module>crayfish-example-akka-cluster</module>
         <module>crayfish-example-akka-guarantee</module>
         <module>crayfish-example-akka-mgmtactor</module>
         <module>crayfish-example-akka-aggregator</module>
+        <module>crayfish-example-akka-supplier</module>
         <module>crayfish-examples-akka-http</module>
+        <module>crayfish-example-akka-router</module>
+        <module>crayfish-example-akka-sequence</module>
     </modules>
 
     <dependencies>

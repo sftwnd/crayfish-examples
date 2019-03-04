@@ -19,7 +19,8 @@ import java.util.Map;
  * Created by ashindarev on 05.08.16.
  */
 @Configuration
-@ConfigurationProperties(prefix = "example.spring", ignoreNestedProperties=false)
+//@ConfigurationProperties(prefix = "example.spring", ignoreNestedProperties=false)
+@ConfigurationProperties(prefix = "example.spring")
 public class SpringParameters implements BeanFactoryAware {
 
     private static final Logger logger = LoggerFactory.getLogger(SpringParameters.class);

@@ -13,6 +13,9 @@
     <artifactId>crayfish-examples</artifactId>
     <packaging>pom</packaging>
 
+    <properties>
+        <spring-cloud-starter-openfeign.version>2.1.0.M1</spring-cloud-starter-openfeign.version>
+    </properties>
     <modules>
         <module>crayfish-example-amqp</module>
         <module>crayfish-example-default</module>
@@ -49,5 +52,6 @@
             </resource>
         </resources>
     </build>
+
 
 </project>

@@ -31,7 +31,7 @@ public class DerbyServerUcpRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("{}[derbytest.com.github.sftwnd.crayfish.examples.derbyserver.DerbyJdbcTemplateTestRunner] has been started.", this.getClass().getSimpleName());
+        logger.info("[{}] has been started.", this.getClass().getSimpleName());
         Thread.sleep(2000L);
         try ( Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(true);

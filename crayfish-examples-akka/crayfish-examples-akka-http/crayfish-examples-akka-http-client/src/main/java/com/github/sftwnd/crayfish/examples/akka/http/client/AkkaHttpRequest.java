@@ -7,7 +7,6 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
 import akka.stream.Materializer;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.CompletionStage;

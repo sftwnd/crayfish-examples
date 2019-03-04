@@ -2,60 +2,54 @@
 <configuration>
     <!-- <include resource="org/springframework/boot/logging/logback/base.xml" /> -->
 
+    <!--
     <conversionRule conversionWord="myflag"
-                    converterClass="com.github.sftwnd.crayfish.examples.logging.MySampleConverter" />
-
-    <appender name="MY" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- Log SCMessage format -->
-        <withJansi>true</withJansi>
-        <encoder>
-            <pattern>%green(%date{ISO8601}) [%32thread] %highlight(%-5level) %boldYellow(%-16myflag) %cyan(%logger{36}) - %msg%n</pattern>
-        </encoder>
-    </appender>
-
+                    converterClass="com.github.sftwnd.crayfish.examples.logging.MdcLoggedMarker" />
+     -->
+    
     <appender name="DEFAULT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- Log SCMessage format -->
         <withJansi>true</withJansi>
         <encoder>
-            <pattern>%green(%date{ISO8601}) [%32thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+            <pattern>D %green(%date{ISO8601}) [%32thread] %highlight(%-5level)                %cyan(%logger{36}) - %msg%n</pattern>
         </encoder>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
-                <marker>USEROPS</marker>
-                <marker>ADMINOPS</marker>
+            <evaluator class="com.github.sftwnd.crayfish.examples.logging.MdcLoggedOnKeyEvaluator">
+                <key>PAY</key>
+                <key>MSG</key>
             </evaluator>
             <onMismatch>ACCEPT</onMismatch>
             <onMatch>DENY</onMatch>
         </filter>
     </appender>
 
-    <appender name="USEROPS" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="PAY" class="ch.qos.logback.core.ConsoleAppender">
         <!-- Log SCMessage format -->
         <withJansi>true</withJansi>
         <encoder>
-            <pattern>%green(%date{ISO8601}) [%32thread] %highlight(%-5level) %boldWhite[%gray(U:%X{user})] %cyan(%logger{36}) - %msg%n</pattern>
+            <pattern>P %green(%date{ISO8601}) [%32thread] %highlight(%-5level) %red(PAY #%-9X{PAY}) %cyan(%logger{36}) - %msg%n</pattern>
         </encoder>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
-                <marker>USEROPS</marker>
+            <evaluator class="com.github.sftwnd.crayfish.examples.logging.MdcLoggedOnKeyEvaluator">
+                <key>PAY</key>
             </evaluator>
-            <onMismatch>DENY</onMismatch>
             <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
 
-    <appender name="ADMINOPS" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="MSG" class="ch.qos.logback.core.ConsoleAppender">
         <!-- Log SCMessage format -->
         <withJansi>true</withJansi>
         <encoder>
-            <pattern>%green(%date{ISO8601}) [%32thread] %highlight(%-5level) %boldWhite[%boldRed(A:%X{admin})] %cyan(%logger{36}) - %msg%n</pattern>
+            <pattern>M %green(%date{ISO8601}) [%32thread] %highlight(%-5level) %green(MSG #%-9X{MSG}) %cyan(%logger{36}) - %msg%n</pattern>
         </encoder>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
-                <marker>ADMINOPS</marker>
+            <evaluator class="com.github.sftwnd.crayfish.examples.logging.MdcLoggedOnKeyEvaluator">
+                <key>MSG</key>
             </evaluator>
-            <onMismatch>DENY</onMismatch>
             <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
         </filter>
     </appender>
 
@@ -65,27 +59,15 @@
         <appender-ref ref="DEFAULT" />
     </appender>
 
-    <appender name="ASYNC-USEROPS" class="ch.qos.logback.classic.AsyncAppender">
-        <queueSize>500</queueSize>
-        <discardingThreshold>0</discardingThreshold>
-        <appender-ref ref="USEROPS" />
-    </appender>
-
-    <appender name="ASYNC-ADMINOPS" class="ch.qos.logback.classic.AsyncAppender">
-        <queueSize>500</queueSize>
-        <discardingThreshold>0</discardingThreshold>
-        <appender-ref ref="ADMINOPS" />
-    </appender>
-
-    <!-- <logger name="com.github.sftwnd.crayfish"  level="info"  additivity="false"><appender-ref ref="ASYNC-DEFAULT"/><appender-ref ref="ASYNC-USEROPS"/><appender-ref ref="ASYNC-ADMINOPS"/><appender-ref ref="MY"/></logger> -->
-    <logger name="com.github.sftwnd.crayfish"  level="info"  additivity="false"><appender-ref ref="MY"/></logger>
+    <logger name="com.github.sftwnd.crayfish"  level="info"  additivity="false">
+        <appender-ref ref="ASYNC-DEFAULT"/>
+        <appender-ref ref="MSG"/>
+        <appender-ref ref="PAY"/>
+    </logger>
 
     <!-- root -->
     <root level="INFO">
         <appender-ref ref="ASYNC-DEFAULT"/>
-        <appender-ref ref="ASYNC-USEROPS"/>
-        <appender-ref ref="ASYNC-ADMINOPS"/>
-        <!-- <appender-ref ref="MY"/> -->
     </root>
 
 </configuration>

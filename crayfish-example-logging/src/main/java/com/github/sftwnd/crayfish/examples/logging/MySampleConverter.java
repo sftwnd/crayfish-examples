@@ -14,9 +14,9 @@ public class MySampleConverter extends ClassicConverter {
     public String convert(ILoggingEvent event) {
         Marker marker = event.getMarker();
         if (useropsMarker.equals(marker)) {
-            return new StringBuilder("[U:").append(event.getMDCPropertyMap().get("user")).append("]").toString();
+            return new StringBuilder("[USR:").append(event.getMDCPropertyMap().get("user")).append("]").toString();
         } else if (adminopsMarker.equals(marker)) {
-            return new StringBuilder("[A:").append(event.getMDCPropertyMap().get("admin")).append("]").toString();
+            return new StringBuilder("[ADM:").append(event.getMDCPropertyMap().get("admin")).append("]").toString();
         }
         else return "";
     }
