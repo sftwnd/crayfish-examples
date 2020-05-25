@@ -8,6 +8,8 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <name>CrayFish :: EXAMPLES :: Common :: Crc</name>
+    <packaging>jar</packaging>
 
     <artifactId>crayfish-examples-common-crc</artifactId>
 
