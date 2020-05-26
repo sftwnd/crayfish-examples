@@ -19,6 +19,7 @@
         <module>crayfish-examples-common-format</module>
         <module>crayfish-examples-common-resource</module>
         <module>crayfish-examples-common-state</module>
+        <module>crayfish-examples-common-json</module>
     </modules>
 
 </project>
