@@ -8,15 +8,15 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <name>CrayFish :: EXAMPLES :: Common :: Resource</name>
+    <name>CrayFish :: EXAMPLES :: Common :: State</name>
     <packaging>jar</packaging>
 
-    <artifactId>crayfish-examples-common-resource</artifactId>
+    <artifactId>crayfish-examples-common-state</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.github.sftwnd.crayfish.common</groupId>
-            <artifactId>crayfish-common-resource</artifactId>
+            <artifactId>crayfish-common-state</artifactId>
         </dependency>
     </dependencies>
 
