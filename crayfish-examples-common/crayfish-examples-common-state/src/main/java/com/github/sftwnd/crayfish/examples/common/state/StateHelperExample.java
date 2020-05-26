@@ -26,8 +26,13 @@ public class StateHelperExample {
         try (AutoCloseable x = new StateHelper<>("Autoclosable state", pojo::getState, pojo::setState )) {
             process(pojo);
         }
+        logger.info("After Autoclose pojo value:");
+        process(pojo);
 
         StateHelper.process("Process with new state value", pojo::getState, pojo::setState, () -> process(pojo));
+        logger.info("After Process pojo value:");
+        process(pojo);
+
     }
 
     @Data
