@@ -11,10 +11,15 @@
 
     <groupId>com.github.sftwnd.crayfish.examples.common</groupId>
     <artifactId>crayfish-examples-common</artifactId>
+    <name>CrayFish :: EXAMPLES :: Common</name>
     <packaging>pom</packaging>
 
     <modules>
+        <module>crayfish-examples-common-crc</module>
+        <module>crayfish-examples-common-format</module>
         <module>crayfish-examples-common-resource</module>
+        <module>crayfish-examples-common-state</module>
+        <module>crayfish-examples-common-json</module>
     </modules>
 
 </project>
