@@ -33,7 +33,7 @@
             <repositories>
                 <repository>
                     <id>central</id>
-                    <url>http://central.maven.org/maven2/</url>
+                    <url>https://repo.maven.apache.org/maven2/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
@@ -41,7 +41,6 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
-                <!--
                 <repository>
                     <id>netflixoss-releases</id>
                     <name>NetflixOSS Releases</name>
@@ -51,7 +50,6 @@
                         <updatePolicy>never</updatePolicy>
                     </releases>
                 </repository>
-                -->
                 <repository>
                     <id>maven.oracle.com</id>
                     <name>oracle-maven-repo</name>
@@ -90,24 +88,12 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
-                <!-- Sonatype Repository -->
-                <repository>
-                    <id>sonatype-nexus-snapshots</id>
-                    <name>Sonatype Nexus Repository</name>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
                 <!-- ================= -->
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
                     <id>central</id>
-                    <url>http://central.maven.org/maven2/</url>
+                    <url>https://repo.maven.apache.org/maven2/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
