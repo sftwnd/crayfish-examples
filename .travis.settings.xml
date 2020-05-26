@@ -63,11 +63,34 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
+                <!-- OSS Sonatype -->
+                <repository>
+                    <id>sonatype-nexus-staging</id>
+                    <name>Nexus Release Repository</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>sonatype-nexus-snapshots</id>
+                    <name>Sonatype Nexus Snapshots</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
                 <!-- Spring Repository -->
                 <repository>
                     <id>spring-snapshots</id>
                     <name>Spring Snapshots</name>
-                    <url>http://repo.spring.io/libs-snapshot-local</url>
+                    <url>https://repo.spring.io/libs-snapshot-local</url>
                     <snapshots>
                         <enabled>true</enabled>
                     </snapshots>
@@ -75,7 +98,7 @@
                 <repository>
                     <id>spring-milestones</id>
                     <name>Spring Milestones</name>
-                    <url>http://repo.spring.io/libs-milestone-local</url>
+                    <url>https://repo.spring.io/libs-milestone-local</url>
                     <snapshots>
                         <enabled>false</enabled>
                     </snapshots>
@@ -83,7 +106,7 @@
                 <repository>
                     <id>spring-releases</id>
                     <name>Spring Releases</name>
-                    <url>http://repo.spring.io/release</url>
+                    <url>https://repo.spring.io/release</url>
                     <snapshots>
                         <enabled>false</enabled>
                     </snapshots>

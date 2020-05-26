@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class StateHelperExample {
 
+    @SuppressWarnings("try")
     public static void main(String[] args) throws Exception {
         POJO pojo = new POJO("Initial state");
         logger.info("Initial pojo value:");
