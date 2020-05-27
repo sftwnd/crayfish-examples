@@ -9,17 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.sftwnd.crayfish.examples.common</groupId>
-    <artifactId>crayfish-examples-common</artifactId>
-    <name>CrayFish :: EXAMPLES :: Common</name>
+    <groupId>com.github.sftwnd.crayfish.examples.zookeeper</groupId>
+    <artifactId>crayfish-examples-zookeeper</artifactId>
+    <name>CrayFish :: EXAMPLES :: Zookeeper</name>
     <packaging>pom</packaging>
-
-    <modules>
-        <module>crayfish-examples-common-crc</module>
-        <module>crayfish-examples-common-format</module>
-        <module>crayfish-examples-common-resource</module>
-        <module>crayfish-examples-common-state</module>
-        <module>crayfish-examples-common-json</module>
-    </modules>
 
 </project>

@@ -11,7 +11,7 @@
 
     <groupId>com.github.sftwnd.crayfish.examples</groupId>
     <artifactId>crayfish-examples</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>CrayFish :: EXAMPLES</name>
     <packaging>pom</packaging>
 
@@ -36,6 +36,7 @@
 
     <modules>
         <module>crayfish-examples-common</module>
+        <module>crayfish-examples-zookeeper</module>
     </modules>
 
     <dependencies>
