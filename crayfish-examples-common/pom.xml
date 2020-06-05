@@ -20,6 +20,7 @@
         <module>crayfish-examples-common-resource</module>
         <module>crayfish-examples-common-state</module>
         <module>crayfish-examples-common-json</module>
+        <module>crayfish-examples-common-state</module>
     </modules>
 
 </project>

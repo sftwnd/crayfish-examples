@@ -13,4 +13,15 @@
     <name>CrayFish :: EXAMPLES :: Zookeeper :: Service</name>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish.zookeeper</groupId>
+            <artifactId>crayfish-zookeeper-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
