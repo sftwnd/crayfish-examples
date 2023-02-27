@@ -7,17 +7,21 @@
 
     <groupId>com.github.sftwnd.crayfish.examples</groupId>
     <artifactId>crayfish-examples</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
     <name>CrayFish :: EXAMPLES</name>
 
     <properties>
-        <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <logback.version>1.2.10</logback.version>
-        <lombok.version>1.18.22</lombok.version>
-        <slf4j.version>1.7.33</slf4j.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <exec-maven-plugin.versiom>3.1.0</exec-maven-plugin.versiom>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombok.version>1.18.26</lombok.version>
+        <slf4j.version>2.0.5</slf4j.version>
+        <logback.version>1.4.5</logback.version>
         <!-- Crayfish libraries versions -->
-        <crayfish-alarms.version>0.0.1</crayfish-alarms.version>
+        <crayfish-alarms.version>0.1.0</crayfish-alarms.version>
         <!-- -->
     </properties>
 
@@ -77,8 +81,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <compilerArgs>
                         <arg>-Xlint:all</arg>
                         <arg>-Xlint:-processing</arg>
@@ -87,6 +91,24 @@
                 </configuration>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${exec-maven-plugin.versiom}</version>
+                    <configuration>
+                        <skip>true</skip>
+                        <executable>java</executable>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
@@ -110,7 +132,12 @@
         <dependencies>
             <dependency>
                 <groupId>com.github.sftwnd.crayfish.alarms</groupId>
-                <artifactId>crayfish-alarms-spring-boot-timerange-service-starter</artifactId>
+                <artifactId>crayfish-alarms-timerange</artifactId>
+                <version>${crayfish-alarms.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                <artifactId>crayfish-examples-alarms-time-range</artifactId>
                 <version>${crayfish-alarms.version}</version>
             </dependency>
             <dependency>
