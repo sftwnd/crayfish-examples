@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.sftwnd.crayfish.examples.alarms</groupId>
+        <artifactId>crayfish-examples-alarms</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+    <packaging>jar</packaging>
+
+    <name>CrayFish :: EXAMPLES :: ALARMS :: TimeRange</name>
+
+    <artifactId>crayfish-examples-alarms-time-range</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+            <artifactId>crayfish-alarms-timerange</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                    <includeProjectDependencies>true</includeProjectDependencies>
+                    <includePluginDependencies>true</includePluginDependencies>
+                    <mainClass>com.github.sftwnd.crayfish.examples.alarms.timerange.TimeRangeFilledParallel</mainClass>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>logback.configurationFile</key>
+                            <value>${project.basedir}/crayfish-examples-alarms/crayfish-examples-alarms-time-range/src/main/resources/logback.xml</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <workingDirectory>${project.basedir}</workingDirectory>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                        <version>${logback.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

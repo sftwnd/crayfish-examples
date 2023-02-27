@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.sftwnd.crayfish.examples</groupId>
+        <artifactId>crayfish-examples</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+    <packaging>pom</packaging>
+
+    <groupId>com.github.sftwnd.crayfish.examples.alarms</groupId>
+    <artifactId>crayfish-examples-alarms</artifactId>
+
+    <name>CrayFish :: EXAMPLES :: ALARMS</name>
+
+    <modules>
+        <module>crayfish-examples-alarms-time-range</module>
+    </modules>
+
+</project>
