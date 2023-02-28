@@ -54,8 +54,8 @@ public class TimeRangeFilledParallel {
         logger.info("Last alarm received at: {}", lastInstant.get());
         logger.info("Alarms: {}", fired.get());
         logger.info("Fires: {}", fires.get());
-        logger.info("Avg fire duration: {} sec", 1.0D * Math.round(1.0D * setDuration.get().toNanos() / fires.get() / 10000000.0D) / 100.0D );
-        logger.info("Avg delay: {} sec", 1.0D * Math.round(1.0D * completeDelay.get().toNanos() / fired.get() / 10000000.0D) / 100.0D);
+        logger.info("Avg fire duration: {} sec", 1.0D * Math.round(1.0D * setDuration.get().toNanos() / fires.get() / 100000.0D) / 10000.0D );
+        logger.info("Avg delay: {} sec", 1.0D * Math.round(1.0D * completeDelay.get().toNanos() / fired.get() / 100000.0D) / 10000.0D);
         logger.info("Avg: {} alarm/sec",
                 Math.round(100000.0D * fired.get() / Duration.between(firstInstant.get(), lastInstant.get()).toMillis()) / 100.0D
         );
