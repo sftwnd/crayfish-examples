@@ -7,13 +7,14 @@
 
     <groupId>com.github.sftwnd.crayfish.examples</groupId>
     <artifactId>crayfish-examples</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>CrayFish :: EXAMPLES</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <exec-maven-plugin.versiom>3.1.0</exec-maven-plugin.versiom>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,7 +22,7 @@
         <slf4j.version>2.0.5</slf4j.version>
         <logback.version>1.4.5</logback.version>
         <!-- Crayfish libraries versions -->
-        <crayfish-alarms.version>0.1.0</crayfish-alarms.version>
+        <crayfish-alarms.version>1.0.0</crayfish-alarms.version>
         <!-- -->
     </properties>
 
