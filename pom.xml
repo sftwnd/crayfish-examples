@@ -7,21 +7,25 @@
 
     <groupId>com.github.sftwnd.crayfish.examples</groupId>
     <artifactId>crayfish-examples</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
+
     <name>CrayFish :: EXAMPLES</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <exec-maven-plugin.versiom>3.1.0</exec-maven-plugin.versiom>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.26</lombok.version>
-        <slf4j.version>2.0.5</slf4j.version>
+        <slf4j.version>2.0.6</slf4j.version>
         <logback.version>1.4.5</logback.version>
         <!-- Crayfish libraries versions -->
-        <crayfish-alarms.version>0.1.0</crayfish-alarms.version>
+        <crayfish-alarms.version>1.0.1</crayfish-alarms.version>
+        <crayfish-alarms-service.version>${crayfish-alarms.version}</crayfish-alarms-service.version>
+        <crayfish-alarms-timerange.version>${crayfish-alarms.version}</crayfish-alarms-timerange.version>
         <!-- -->
     </properties>
 
@@ -46,7 +50,7 @@
         <url>https://github.com/sftwnd/crayfish-examples</url>
         <connection>scm:git:https://github.com/sftwnd/crayfish-examples.git</connection>
         <developerConnection>scm:git:git@github.com:sftwnd/crayfish-examples.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>crayfish-examples-1.0.1</tag>
     </scm>
 
     <repositories>
@@ -133,12 +137,22 @@
             <dependency>
                 <groupId>com.github.sftwnd.crayfish.alarms</groupId>
                 <artifactId>crayfish-alarms-timerange</artifactId>
-                <version>${crayfish-alarms.version}</version>
+                <version>${crayfish-alarms-timerange.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.sftwnd.crayfish.alarms</groupId>
-                <artifactId>crayfish-examples-alarms-time-range</artifactId>
-                <version>${crayfish-alarms.version}</version>
+                <artifactId>crayfish-alarms-service</artifactId>
+                <version>${crayfish-alarms-service.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                <artifactId>crayfish-examples-alarms-timerange</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                <artifactId>crayfish-examples-alarms-service</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -155,6 +169,11 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
         </dependencies>

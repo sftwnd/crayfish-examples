@@ -34,7 +34,7 @@ public class TimeRangeFilledParallel {
     private static final AtomicInteger filled = new AtomicInteger(0);
 
     public static void main(String[] args) throws InterruptedException {
-        Thread.currentThread().setName("main");
+
         ITimeRangeFactory<Instant, Instant> timeRangeFactory = ITimeRangeFactory.temporal(
                 Duration.ofSeconds(SECONDS),
                 Duration.ofMillis(125),
