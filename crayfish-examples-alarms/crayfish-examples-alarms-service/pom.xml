@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.sftwnd.crayfish.examples.alarms</groupId>
+        <artifactId>crayfish-examples-alarms</artifactId>
+        <version>1.0.1-SNAPSHOT</version>
+    </parent>
+    <packaging>jar</packaging>
+
+    <name>CrayFish :: EXAMPLES :: ALARMS :: Service</name>
+
+    <artifactId>crayfish-examples-alarms-service</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+            <artifactId>crayfish-alarms-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <configuration>
+                        <skip>false</skip>
+                        <includeProjectDependencies>true</includeProjectDependencies>
+                        <includePluginDependencies>true</includePluginDependencies>
+                        <systemProperties>
+                            <systemProperty>
+                                <key>logback.configurationFile</key>
+                                <value>${project.basedir}/crayfish-examples-alarms/crayfish-examples-alarms-timerange/src/main/resources/logback.xml</value>
+                            </systemProperty>
+                        </systemProperties>
+                        <workingDirectory>${project.basedir}</workingDirectory>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>alarm-service-parallel-add</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.github.sftwnd.crayfish.examples.alarms.service.AlarmTimeRangeServiceParallelAdd</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>alarm-service-performance</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.github.sftwnd.crayfish.examples.alarms.service.AlarmTimeRangeServiceSpeed</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

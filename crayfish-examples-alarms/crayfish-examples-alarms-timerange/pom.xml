@@ -6,18 +6,24 @@
     <parent>
         <groupId>com.github.sftwnd.crayfish.examples.alarms</groupId>
         <artifactId>crayfish-examples-alarms</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <packaging>jar</packaging>
 
     <name>CrayFish :: EXAMPLES :: ALARMS :: TimeRange</name>
 
-    <artifactId>crayfish-examples-alarms-time-range</artifactId>
+    <artifactId>crayfish-examples-alarms-timerange</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.github.sftwnd.crayfish.alarms</groupId>
             <artifactId>crayfish-alarms-timerange</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
@@ -34,19 +40,11 @@
                     <systemProperties>
                         <systemProperty>
                             <key>logback.configurationFile</key>
-                            <value>${project.basedir}/crayfish-examples-alarms/crayfish-examples-alarms-time-range/src/main/resources/logback.xml</value>
+                            <value>${project.basedir}/crayfish-examples-alarms/crayfish-examples-alarms-timerange/src/main/resources/logback.xml</value>
                         </systemProperty>
                     </systemProperties>
                     <workingDirectory>${project.basedir}</workingDirectory>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>ch.qos.logback</groupId>
-                        <artifactId>logback-classic</artifactId>
-                        <version>${logback.version}</version>
-                        <scope>runtime</scope>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
