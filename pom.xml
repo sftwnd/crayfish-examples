@@ -7,7 +7,7 @@
 
     <groupId>com.github.sftwnd.crayfish.examples</groupId>
     <artifactId>crayfish-examples</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <name>CrayFish :: EXAMPLES</name>
 
@@ -50,7 +50,7 @@
         <url>https://github.com/sftwnd/crayfish-examples</url>
         <connection>scm:git:https://github.com/sftwnd/crayfish-examples.git</connection>
         <developerConnection>scm:git:git@github.com:sftwnd/crayfish-examples.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>crayfish-examples-1.0.1</tag>
     </scm>
 
     <repositories>
