@@ -7,7 +7,7 @@
 
     <groupId>com.github.sftwnd.crayfish.examples</groupId>
     <artifactId>crayfish-examples</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <name>CrayFish :: EXAMPLES</name>
 
