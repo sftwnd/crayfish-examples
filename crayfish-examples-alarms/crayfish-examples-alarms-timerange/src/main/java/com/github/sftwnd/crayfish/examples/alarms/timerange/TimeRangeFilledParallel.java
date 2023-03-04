@@ -5,7 +5,6 @@ import com.github.sftwnd.crayfish.alarms.timerange.ITimeRangeFactory;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.annotation.Nonnull;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -88,7 +87,7 @@ public class TimeRangeFilledParallel {
                                 .reduce(Duration.ZERO, Duration::plus)));
     }
 
-    private static void process(@NonNull Collection<ITimeRange<Instant, Instant>> timeRanges, @Nonnull Duration delay) throws InterruptedException {
+    private static void process(@NonNull Collection<ITimeRange<Instant, Instant>> timeRanges, @NonNull Duration delay) throws InterruptedException {
         CountDownLatch cdl = new CountDownLatch(timeRanges.size());
         logger.info("Start to process: {}", Instant.now());
         timeRanges.stream().map(timeRange -> new Thread(() -> {
@@ -99,7 +98,7 @@ public class TimeRangeFilledParallel {
         logger.info("Stop processing: {}", Instant.now());
     }
 
-    private static void process(@NonNull ITimeRange<Instant, Instant> timeRange, @Nonnull Duration delay) {
+    private static void process(@NonNull ITimeRange<Instant, Instant> timeRange, @NonNull Duration delay) {
         Duration waitFor = timeRange.duration(delay);
         if (waitFor.compareTo(delay) > 0) {
             logger.info("Wait for: {} in thread: {}", waitFor, Thread.currentThread().getName());

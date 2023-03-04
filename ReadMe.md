@@ -25,3 +25,13 @@ mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-service -P alarm-ser
 ```home-run
 mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-service -P alarm-service-performance exec:java
 ```
+
+## Common
+
+### Common CRC examples
+
+* [Common :: CrcModel example](./crayfish-examples-common-crc/ReadMe.md)
+
+```
+mvn -pl ./crayfish-examples-common-crc exec:java
+```
