@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.sftwnd.crayfish.examples</groupId>
+        <artifactId>crayfish-examples</artifactId>
+        <version>1.0.2</version>
+    </parent>
+    <packaging>jar</packaging>
+
+    <name>CrayFish :: EXAMPLES :: Crc</name>
+
+    <artifactId>crayfish-examples-common-crc</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish.common</groupId>
+            <artifactId>crayfish-common-crc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <configuration>
+                        <skip>false</skip>
+                        <includeProjectDependencies>true</includeProjectDependencies>
+                        <includePluginDependencies>true</includePluginDependencies>
+                        <systemProperties>
+                            <systemProperty>
+                                <key>logback.configurationFile</key>
+                                <value>${project.basedir}/crayfish-examples-alarms/crayfish-examples-alarms-timerange/src/main/resources/logback.xml</value>
+                            </systemProperty>
+                        </systemProperties>
+                        <workingDirectory>${project.basedir}</workingDirectory>
+                        <mainClass>com.github.sftwnd.crayfish.examples.common.crc.CrcModelExample</mainClass>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

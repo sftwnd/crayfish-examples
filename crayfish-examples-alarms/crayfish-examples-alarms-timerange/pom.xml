@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.github.sftwnd.crayfish.examples.alarms</groupId>
         <artifactId>crayfish-examples-alarms</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
     <packaging>jar</packaging>
 
@@ -18,12 +18,6 @@
         <dependency>
             <groupId>com.github.sftwnd.crayfish.alarms</groupId>
             <artifactId>crayfish-alarms-timerange</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <scope>runtime</scope>
         </dependency>
     </dependencies>
 

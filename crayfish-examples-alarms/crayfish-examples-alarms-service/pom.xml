@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.github.sftwnd.crayfish.examples.alarms</groupId>
         <artifactId>crayfish-examples-alarms</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
     <packaging>jar</packaging>
 
@@ -20,16 +20,9 @@
             <artifactId>crayfish-alarms-service</artifactId>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>runtime</scope>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
