@@ -5,6 +5,8 @@ import com.github.sftwnd.crayfish.alarms.service.IAlarmService;
 import com.github.sftwnd.crayfish.alarms.timerange.ITimeRange;
 import com.github.sftwnd.crayfish.alarms.timerange.ITimeRangeFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.bridge.SLF4JBridgeHandler;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -20,13 +22,13 @@ import java.util.stream.IntStream;
 public class AlarmTimeRangeServiceSpeed {
 
     private static final int THREADS = Math.max(4, Runtime.getRuntime().availableProcessors() >> 1);
-    private static final int THREAD_REQ_SEQ = 666666;
+    private static final int THREAD_REQ_SEQ = 1000000;
     private static final int BATCH_SIZE = 100;
-    private static final int SECONDS = 7;
+    private static final int SECONDS = 8;
 
     private static final ITimeRangeFactory<Instant,Instant> timeRangeFactory = ITimeRangeFactory.temporal (
             Duration.ofSeconds(SECONDS),
-            Duration.ofMillis(125),
+            Duration.ofMillis(333),
             Duration.ofSeconds(1),
             Instant::compareTo
     );
@@ -39,9 +41,12 @@ public class AlarmTimeRangeServiceSpeed {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Instant startInstant = Instant.now().truncatedTo(ChronoUnit.SECONDS).plusSeconds(6);
+        SLF4JBridgeHandler.removeHandlersForRootLogger();
+        SLF4JBridgeHandler.install();
+
+        Instant startInstant = Instant.now().truncatedTo(ChronoUnit.SECONDS).plusSeconds(24);
         ITimeRange<Instant,Instant> timeRange = timeRangeFactory.timeRange(startInstant);
-        IAlarmService<Instant,Instant> service = new AlarmTimeRangeService<>(timeRange, null);
+        IAlarmService<Instant,Instant> service = new AlarmTimeRangeService<>(timeRange, Duration.ZERO);
 
         CountDownLatch serviceCdl = new CountDownLatch(1);
         Thread serviceThread = new Thread(() -> {
@@ -78,7 +83,7 @@ public class AlarmTimeRangeServiceSpeed {
         Duration duration = Duration.between(firstFire.get(), lastFire.get());
         logger.info("Fired[{}] for {}", firedAlarms.get(), duration);
         logger.info("delay: {}, avg: {} sec", Duration.ofNanos(delay.get()), 1.0D * Math.round(1.0D * delay.get() / firedAlarms.get() / 100000.0D) / 10000.0D);
-        logger.info("Alarm/sec: {}", 1.0D * Math.round(1000000000.0D * firedAlarms.get() / duration.toNanos() * 100.0D) / 100.0D );
+        logger.info("Alarm/sec: {}", Math.round(1000000000.0D * firedAlarms.get() / duration.toNanos()) );
     }
 
     private static final AtomicLong active = new AtomicLong();

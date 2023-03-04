@@ -5,6 +5,7 @@ import com.github.sftwnd.crayfish.alarms.service.IAlarmService;
 import com.github.sftwnd.crayfish.alarms.timerange.ITimeRange;
 import com.github.sftwnd.crayfish.alarms.timerange.ITimeRangeFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -38,6 +39,9 @@ public class AlarmTimeRangeServiceParallelAdd {
     );
 
     public static void main(String[] args) throws InterruptedException {
+
+        SLF4JBridgeHandler.removeHandlersForRootLogger();
+        SLF4JBridgeHandler.install();
 
         Instant rangeInstant = Instant.now().truncatedTo(ChronoUnit.SECONDS);
         Instant startInstant = rangeInstant.plusSeconds(1);

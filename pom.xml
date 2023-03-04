@@ -7,7 +7,7 @@
 
     <groupId>com.github.sftwnd.crayfish.examples</groupId>
     <artifactId>crayfish-examples</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
 
     <name>CrayFish :: EXAMPLES</name>
 
@@ -23,9 +23,10 @@
         <slf4j.version>2.0.6</slf4j.version>
         <logback.version>1.4.5</logback.version>
         <!-- Crayfish libraries versions -->
-        <crayfish-alarms.version>1.0.1</crayfish-alarms.version>
+        <crayfish-alarms.version>1.0.2</crayfish-alarms.version>
         <crayfish-alarms-service.version>${crayfish-alarms.version}</crayfish-alarms-service.version>
         <crayfish-alarms-timerange.version>${crayfish-alarms.version}</crayfish-alarms-timerange.version>
+        <crayfish-common-crc.version>1.0.1</crayfish-common-crc.version>
         <!-- -->
     </properties>
 
@@ -74,6 +75,7 @@
 
     <modules>
         <module>crayfish-examples-alarms</module>
+        <module>crayfish-examples-common-crc</module>
     </modules>
 
     <build>
@@ -87,9 +89,17 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                     <compilerArgs>
                         <arg>-Xlint:all</arg>
                         <arg>-Xlint:-processing</arg>
+                        <arg>-Xlint:-requires-automatic</arg>
                     </compilerArgs>
                     <showWarnings>true</showWarnings>
                 </configuration>
@@ -124,7 +134,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -143,6 +153,11 @@
                 <groupId>com.github.sftwnd.crayfish.alarms</groupId>
                 <artifactId>crayfish-alarms-service</artifactId>
                 <version>${crayfish-alarms-service.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sftwnd.crayfish.common</groupId>
+                <artifactId>crayfish-common-crc</artifactId>
+                <version>${crayfish-common-crc.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.sftwnd.crayfish.alarms</groupId>
