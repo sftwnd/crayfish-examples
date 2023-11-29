@@ -21,7 +21,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.26</lombok.version>
         <slf4j.version>2.0.6</slf4j.version>
-        <logback.version>1.4.5</logback.version>
+        <logback.version>1.4.12</logback.version>
         <!-- Crayfish libraries versions -->
         <crayfish-alarms.version>1.0.2</crayfish-alarms.version>
         <crayfish-alarms-service.version>${crayfish-alarms.version}</crayfish-alarms-service.version>
