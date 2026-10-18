@@ -30,8 +30,16 @@ mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-service -P alarm-ser
 
 ### Common CRC examples
 
-* [Common :: CrcModel example](./crayfish-examples-common-crc/ReadMe.md)
+* [Common :: CRC examples](./crayfish-examples-common-crc/ReadMe.md)
 
-```
-mvn -pl ./crayfish-examples-common-crc exec:java
+| Example | Profile |
+|---|---|
+| CrcModel | (none) |
+| Modbus RTU frame | `crc-modbus` |
+| Parallel CRC of a large file | `crc-parallel` |
+| Resume and append | `crc-resume` |
+| Find an unknown CRC | `crc-find` |
+
+```shell
+mvn -pl ./crayfish-examples-common-crc -P <profile> exec:java
 ```

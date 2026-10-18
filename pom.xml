@@ -14,19 +14,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <exec-maven-plugin.versiom>3.1.0</exec-maven-plugin.versiom>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lombok.version>1.18.26</lombok.version>
+        <lombok.version>1.18.48</lombok.version>
         <slf4j.version>2.0.6</slf4j.version>
         <logback.version>1.4.12</logback.version>
         <!-- Crayfish libraries versions -->
         <crayfish-alarms.version>1.0.2</crayfish-alarms.version>
         <crayfish-alarms-service.version>${crayfish-alarms.version}</crayfish-alarms-service.version>
         <crayfish-alarms-timerange.version>${crayfish-alarms.version}</crayfish-alarms-timerange.version>
-        <crayfish-common-crc.version>1.0.1</crayfish-common-crc.version>
+        <crayfish-common-crc.version>2.1.0</crayfish-common-crc.version>
         <!-- -->
     </properties>
 
@@ -87,8 +86,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <release>${maven.compiler.release}</release>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
