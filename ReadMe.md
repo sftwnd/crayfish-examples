@@ -39,6 +39,11 @@ mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-service -P alarm-ser
 | Parallel CRC of a large file | `crc-parallel` |
 | Resume and append | `crc-resume` |
 | Find an unknown CRC | `crc-find` |
+| Catalogue and names | `crc-catalogue` |
+| PNG chunks | `crc-png` |
+| A CRC of your own | `crc-custom` |
+| Bits | `crc-bits` |
+| The JDK classes and the lookup tables | `crc-jdk` |
 
 ```shell
 mvn -pl ./crayfish-examples-common-crc -P <profile> exec:java
