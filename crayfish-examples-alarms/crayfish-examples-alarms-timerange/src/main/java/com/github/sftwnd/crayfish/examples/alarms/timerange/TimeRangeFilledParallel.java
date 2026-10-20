@@ -24,9 +24,12 @@ import java.util.stream.IntStream;
 @Slf4j
 public class TimeRangeFilledParallel {
 
-    private static final int THREAD_ALARMS_PER_SEQ = 750000;
     private static final int THREADS = Runtime.getRuntime().availableProcessors() >>> 1;
     private static final int SECONDS = 17;
+    // a time range of crayfish-alarms 1.0.5 takes about 100 bytes of the heap per Instant: the alarms take at most
+    // a half of the heap, and a thread fills at most 750,000 alarms per second of its range
+    private static final int THREAD_ALARMS_PER_SEQ = (int) Math.min(750_000L,
+            Runtime.getRuntime().maxMemory() / 2 / 100 / Math.max(1, THREADS) / SECONDS);
     private static final AtomicInteger fires = new AtomicInteger(0);
     private static final AtomicInteger fired = new AtomicInteger(0);
     private static final AtomicInteger filled = new AtomicInteger(0);
@@ -39,6 +42,7 @@ public class TimeRangeFilledParallel {
                 Duration.ofSeconds(2),
                 Instant::compareTo
         );
+        logger.info("Threads: {}, alarms per second of a thread: {}", THREADS, THREAD_ALARMS_PER_SEQ);
         Instant start = Instant.now().truncatedTo(ChronoUnit.SECONDS).plusSeconds(20);
         Collection<ITimeRange<Instant,Instant>> timeRanges = IntStream.range(0, THREADS)
                 .mapToObj(i -> timeRangeFactory.timeRange(start))
@@ -73,25 +77,31 @@ public class TimeRangeFilledParallel {
         fired.addAndGet(alarms.size());
         Instant firstAlarmInstant = Objects.requireNonNull(alarms.stream().min(Comparator.naturalOrder()).orElse(now));
         Instant lastAlarmInstant = Objects.requireNonNull(alarms.stream().max(Comparator.naturalOrder()).orElse(now));
+        // the first alarm of the batch has the longest delay, the last one the shortest
         Duration firstAlarmDelay = Duration.between(firstAlarmInstant, now);
         Duration lastAlarmDelay = Duration.between(lastAlarmInstant, now);
+        // computed before the update: an update that loses to another thread applies its function again, and with the
+        // sum of a batch in it the threads of the large batches lose to the others again and again
+        Duration batchDelay = alarms.stream()
+                .map(instant -> Duration.between(instant, now))
+                .reduce(Duration.ZERO, Duration::plus);
         setDuration.updateAndGet(current -> current.plus(Duration.between(firstAlarmInstant, lastAlarmInstant)));
         firstInstant.compareAndSet(null, firstAlarmInstant);
         lastInstant.updateAndGet(current -> current == null || current.isBefore(lastAlarmInstant) ? lastAlarmInstant : current);
-        minDelay.updateAndGet(current -> current == null || firstAlarmDelay.compareTo(current) < 0 ? firstAlarmDelay : current);
-        maxDelay.updateAndGet(current -> current == null || lastAlarmDelay.compareTo(current) > 0 ? lastAlarmDelay : current);
-        completeDelay.updateAndGet(current ->
-                current.plus(alarms.stream()
-                                .map(instant -> Duration.between(instant, now))
-                                .reduce(Duration.ZERO, Duration::plus)));
+        minDelay.updateAndGet(current -> current == null || lastAlarmDelay.compareTo(current) < 0 ? lastAlarmDelay : current);
+        maxDelay.updateAndGet(current -> current == null || firstAlarmDelay.compareTo(current) > 0 ? firstAlarmDelay : current);
+        completeDelay.updateAndGet(current -> current.plus(batchDelay));
     }
 
     private static void process(Collection<ITimeRange<Instant, Instant>> timeRanges, Duration delay) throws InterruptedException {
         CountDownLatch cdl = new CountDownLatch(timeRanges.size());
         logger.info("Start to process: {}", Instant.now());
         timeRanges.stream().map(timeRange -> new Thread(() -> {
-            process(timeRange, delay);
-            cdl.countDown();
+            try {
+                process(timeRange, delay);
+            } finally {
+                cdl.countDown();
+            }
         })).forEach(Thread::start);
         cdl.await();
         logger.info("Stop processing: {}", Instant.now());
@@ -121,8 +131,11 @@ public class TimeRangeFilledParallel {
         CountDownLatch cdl = new CountDownLatch(timeRanges.size());
         logger.info("Start to fill: {}", Instant.now());
         timeRanges.stream().map(timeRange -> new Thread(() -> {
-            fill(timeRange);
-            cdl.countDown();
+            try {
+                fill(timeRange);
+            } finally {
+                cdl.countDown();
+            }
         })).forEach(Thread::start);
         cdl.await();
         logger.info("Stop filling: {}", Instant.now());
