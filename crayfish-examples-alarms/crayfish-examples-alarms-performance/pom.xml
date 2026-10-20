@@ -15,8 +15,6 @@
     <artifactId>crayfish-examples-alarms-performance</artifactId>
 
     <properties>
-        <!-- the example is compiled against 1.0.5; 1.0.4 has the same API -->
-        <crayfish-alarms.version>1.0.5</crayfish-alarms.version>
         <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
         <!-- the versions compared: each one runs in a JVM of its own with its jars from this directory -->
         <alarms.performance.directory>${project.build.directory}/alarms</alarms.performance.directory>

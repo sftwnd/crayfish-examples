@@ -2,7 +2,6 @@ package com.github.sftwnd.crayfish.examples.alarms.timerange;
 
 import com.github.sftwnd.crayfish.alarms.timerange.ITimeRange;
 import com.github.sftwnd.crayfish.alarms.timerange.ITimeRangeFactory;
-import edu.umd.cs.findbugs.annotations.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
@@ -68,7 +67,7 @@ public class TimeRangeFilledParallel {
     private static final AtomicReference<Duration> completeDelay = new AtomicReference<>(Duration.ZERO);
 
 
-    private static void fireAlarms(@NonNull Collection<Instant> alarms) {
+    private static void fireAlarms(Collection<Instant> alarms) {
         Instant now = Instant.now();
         fires.incrementAndGet();
         fired.addAndGet(alarms.size());
@@ -87,7 +86,7 @@ public class TimeRangeFilledParallel {
                                 .reduce(Duration.ZERO, Duration::plus)));
     }
 
-    private static void process(@NonNull Collection<ITimeRange<Instant, Instant>> timeRanges, @NonNull Duration delay) throws InterruptedException {
+    private static void process(Collection<ITimeRange<Instant, Instant>> timeRanges, Duration delay) throws InterruptedException {
         CountDownLatch cdl = new CountDownLatch(timeRanges.size());
         logger.info("Start to process: {}", Instant.now());
         timeRanges.stream().map(timeRange -> new Thread(() -> {
@@ -98,7 +97,7 @@ public class TimeRangeFilledParallel {
         logger.info("Stop processing: {}", Instant.now());
     }
 
-    private static void process(@NonNull ITimeRange<Instant, Instant> timeRange, @NonNull Duration delay) {
+    private static void process(ITimeRange<Instant, Instant> timeRange, Duration delay) {
         Duration waitFor = timeRange.duration(delay);
         if (waitFor.compareTo(delay) > 0) {
             logger.info("Wait for: {} in thread: {}", waitFor, Thread.currentThread().getName());
@@ -118,7 +117,7 @@ public class TimeRangeFilledParallel {
         logger.info("Stop process at {}, thread: {}", Instant.now(), Thread.currentThread().getName());
     }
 
-    private static void fill(@NonNull Collection<ITimeRange<Instant, Instant>> timeRanges) throws InterruptedException {
+    private static void fill(Collection<ITimeRange<Instant, Instant>> timeRanges) throws InterruptedException {
         CountDownLatch cdl = new CountDownLatch(timeRanges.size());
         logger.info("Start to fill: {}", Instant.now());
         timeRanges.stream().map(timeRange -> new Thread(() -> {
@@ -130,7 +129,7 @@ public class TimeRangeFilledParallel {
     }
 
 
-    private static void fill(@NonNull ITimeRange<Instant, Instant> timeRange) {
+    private static void fill(ITimeRange<Instant, Instant> timeRange) {
         logger.info("Start to fill: {}", Thread.currentThread().getName());
         List<Instant> elements = new LinkedList<>();
         Duration add = Duration.ofNanos(TimeUnit.SECONDS.toNanos(1)/THREAD_ALARMS_PER_SEQ);
