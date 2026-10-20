@@ -26,6 +26,15 @@ mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-service -P alarm-ser
 mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-service -P alarm-service-performance exec:java
 ```
 
+### Alarms performance
+
+* [crayfish-alarms 1.0.4 and 1.0.5 compared](./crayfish-examples-alarms/crayfish-examples-alarms-performance/ReadMe.md):
+  alarms per second, delays, CPU and allocations of the time range and of `AlarmTimeRangeService`
+
+```shell
+mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-performance exec:java
+```
+
 ## Common
 
 ### Common CRC examples

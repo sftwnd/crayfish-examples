@@ -18,6 +18,7 @@
     <modules>
         <module>crayfish-examples-alarms-service</module>
         <module>crayfish-examples-alarms-timerange</module>
+        <module>crayfish-examples-alarms-performance</module>
     </modules>
 
 </project>

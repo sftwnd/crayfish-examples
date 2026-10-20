@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.sftwnd.crayfish.examples.alarms</groupId>
+        <artifactId>crayfish-examples-alarms</artifactId>
+        <version>1.0.2</version>
+    </parent>
+    <packaging>jar</packaging>
+
+    <name>CrayFish :: EXAMPLES :: ALARMS :: Performance</name>
+
+    <artifactId>crayfish-examples-alarms-performance</artifactId>
+
+    <properties>
+        <!-- the example is compiled against 1.0.5; 1.0.4 has the same API -->
+        <crayfish-alarms.version>1.0.5</crayfish-alarms.version>
+        <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
+        <!-- the versions compared: each one runs in a JVM of its own with its jars from this directory -->
+        <alarms.performance.directory>${project.build.directory}/alarms</alarms.performance.directory>
+        <alarms.performance.versions>1.0.4,1.0.5</alarms.performance.versions>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+            <artifactId>crayfish-alarms-service</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>alarms-1.0.4</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${alarms.performance.directory}/1.0.4</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                                    <artifactId>crayfish-alarms-service</artifactId>
+                                    <version>1.0.4</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                                    <artifactId>crayfish-alarms-timerange</artifactId>
+                                    <version>1.0.4</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.common</groupId>
+                                    <artifactId>crayfish-common-expectation</artifactId>
+                                    <version>1.3.1</version>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>alarms-1.0.5</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${alarms.performance.directory}/1.0.5</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                                    <artifactId>crayfish-alarms-service</artifactId>
+                                    <version>1.0.5</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                                    <artifactId>crayfish-alarms-timerange</artifactId>
+                                    <version>1.0.5</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.common</groupId>
+                                    <artifactId>crayfish-common-expectation</artifactId>
+                                    <version>1.4.0</version>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                    <includeProjectDependencies>true</includeProjectDependencies>
+                    <includePluginDependencies>true</includePluginDependencies>
+                    <mainClass>com.github.sftwnd.crayfish.examples.alarms.performance.VersionsComparison</mainClass>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>logback.configurationFile</key>
+                            <value>${project.basedir}/src/main/resources/logback.xml</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>alarms.performance.classes</key>
+                            <value>${project.build.outputDirectory}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>alarms.performance.directory</key>
+                            <value>${alarms.performance.directory}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>alarms.performance.versions</key>
+                            <value>${alarms.performance.versions}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>alarms.performance.report</key>
+                            <value>${project.build.directory}/alarms-performance.md</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <workingDirectory>${project.basedir}</workingDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
