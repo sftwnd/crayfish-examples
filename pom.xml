@@ -22,7 +22,7 @@
         <slf4j.version>2.0.6</slf4j.version>
         <logback.version>1.4.12</logback.version>
         <!-- Crayfish libraries versions -->
-        <crayfish-alarms.version>1.0.2</crayfish-alarms.version>
+        <crayfish-alarms.version>1.0.5</crayfish-alarms.version>
         <crayfish-alarms-service.version>${crayfish-alarms.version}</crayfish-alarms-service.version>
         <crayfish-alarms-timerange.version>${crayfish-alarms.version}</crayfish-alarms-timerange.version>
         <crayfish-common-crc.version>2.1.0</crayfish-common-crc.version>
