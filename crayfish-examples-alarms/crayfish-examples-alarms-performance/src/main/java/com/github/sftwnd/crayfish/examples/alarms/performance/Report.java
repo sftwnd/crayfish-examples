@@ -16,6 +16,8 @@ final class Report {
     private static final String[][] COSTS = {
             {"add-1s", "nsPerAlarm", "addElements, chunks of 1 s: ns per alarm", "lower"},
             {"add-60s", "nsPerAlarm", "addElements, one chunk of 60 s: ns per alarm", "lower"},
+            {"heap-1s", "bytesPerAlarm", "The heap of the range, chunks of 1 s: bytes per alarm", "lower"},
+            {"heap-60s", "bytesPerAlarm", "The heap of the range, one chunk of 60 s: bytes per alarm", "lower"},
             {"extract-1s-10000", "usPerExtraction", "An extraction of 1 alarm, 10,000 waiting, chunks of 1 s: µs", "lower"},
             {"extract-1s-100000", "usPerExtraction", "An extraction of 1 alarm, 100,000 waiting, chunks of 1 s: µs", "lower"},
             {"extract-60s-10000", "usPerExtraction", "An extraction of 1 alarm, 10,000 waiting, one chunk of 60 s: µs", "lower"},
