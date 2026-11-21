@@ -26,6 +26,8 @@ moments, so the clock plays no part.
 
 - `addElements`: 200,000 alarms at random moments of the minute, 100 per call, in chunks of 1 s and in one chunk of
   60 s; ns per alarm.
+- The heap of the range after a full GC with the same alarms, in chunks of 1 s and in one chunk of 60 s; bytes per
+  alarm, the alarms themselves not counted.
 - An extraction that fires one alarm while 10,000 or 100,000 others wait in the range, in chunks of 1 s and in one
   chunk of 60 s; µs per extraction.
 - Extractions every 10 ms of 100,000 alarms of 20 s in chunks of 1 s: the alarms fired per second of work.
@@ -93,12 +95,15 @@ most 100 ms and every alarm is fired; its steps stop at the first rate it does n
 ### The costs of a time range in one thread
 
 A range of a minute with alarms at random moments, and extractions at given moments: no waits. The last column tells
-how many times the value of 1.0.5 is better than that of 1.0.4.
+how many times the value of 1.0.5 is better than that of 1.0.4. The rows of the heap come from a later run on JDK
+11.0.31: the heap does not depend on the load of the machine.
 
 | Measure | 1.0.4 | 1.0.5 | 1.0.5 vs 1.0.4 |
 |---|---|---|---|
 | addElements, chunks of 1 s: ns per alarm | 1,626 | 886 | ×1.84 |
 | addElements, one chunk of 60 s: ns per alarm | 1,273 | 901 | ×1.41 |
+| The heap of the range, chunks of 1 s: bytes per alarm | 40 | 72 | ×0.56 |
+| The heap of the range, one chunk of 60 s: bytes per alarm | 40 | 72 | ×0.56 |
 | An extraction of 1 alarm, 10,000 waiting, chunks of 1 s: µs | 138 | 8.00 | ×17 |
 | An extraction of 1 alarm, 100,000 waiting, chunks of 1 s: µs | 392 | 4.85 | ×81 |
 | An extraction of 1 alarm, 10,000 waiting, one chunk of 60 s: µs | 4,880 | 2.67 | ×1831 |
@@ -182,6 +187,9 @@ One thread registers 50 alarms per second one by one for 20 s, each due 10 to 10
 - At the rates both versions keep up with, the 99th percentile of the delays of 1.0.4 grows with the rate: from 12 to
   77 ms in one thread and from 5 to 25 ms with the service. That of 1.0.5 stays at 0.2 ms in one thread and at 1.3 ms
   with the service.
+- A range of 1.0.5 takes 72 bytes of the heap per alarm, that of 1.0.4 40, the alarms themselves not counted: 1.0.5
+  keeps an entry of 32 bytes per element besides the `TreeMap.Entry` of 40 that both versions have
+  (sftwnd/crayfish-alarms#85).
 - 1.0.4 takes 82 to 93% of a core at any rate: it sorts the chunk at every extraction, and the default minimalWait of
   the service is a busy wait. 1.0.5 takes 3 to 10% of a core up to 50,000 alarms per second with the service.
 - At these rates 1.0.4 allocates 33 to 320 KB per alarm, 1.0.5 0.2 to 0.6 KB.

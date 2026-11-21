@@ -4,6 +4,7 @@ import com.github.sftwnd.crayfish.alarms.timerange.ITimeRange;
 import com.github.sftwnd.crayfish.alarms.timerange.ITimeRangeFactory;
 import com.github.sftwnd.crayfish.common.expectation.TemporalExtractor;
 
+import java.lang.ref.Reference;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -13,9 +14,9 @@ import java.util.SplittableRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * The costs of a time range in one thread, without waits: the time of addElements per alarm, the time of an
- * extraction that fires one alarm while the others wait, the alarms that extractions every 10 ms fire per second of
- * work, and the calls of the expectation. The range is one of 2030 and the extractions get their moments, so the
+ * The costs of a time range in one thread, without waits: the time of addElements per alarm, the heap of the range
+ * per alarm, the time of an extraction that fires one alarm while the others wait, the alarms that extractions every
+ * 10 ms fire per second of work, and the calls of the expectation. The range is one of 2030 and the extractions get their moments, so the
  * clock plays no part. Every measure is the median of its rounds after the rounds of the warm-up.
  */
 final class Costs {
@@ -35,6 +36,8 @@ final class Costs {
     static void run() {
         add(SECOND);
         add(MINUTE);
+        heap(SECOND);
+        heap(MINUTE);
         for (Duration interval : Arrays.asList(SECOND, MINUTE)) {
             extract(interval, 10_000);
             extract(interval, 100_000);
@@ -59,6 +62,37 @@ final class Costs {
             }
         }
         Scenarios.result("cost", "add-" + name(interval), "nsPerAlarm", Firing.round(median(times) / ADDED, 1));
+    }
+
+    /**
+     * The heap of a range per alarm after a full GC, the alarms themselves not counted: the 200,000 alarms of
+     * {@link #add} at random moments of the minute of the range, 100 per call.
+     */
+    private static void heap(Duration interval) {
+        List<List<Alarm>> batches = batches(random(ADDED, MINUTE));
+        long[] bytes = new long[3];
+        for (int round = -1; round < bytes.length; round++) {
+            long before = usedAfterGc();
+            ITimeRange<Alarm, Alarm> range = range(interval, Alarm::due);
+            for (List<Alarm> batch : batches) {
+                range.addElements(batch);
+            }
+            long after = usedAfterGc();
+            // the range is measured with its alarms: it has to be reachable until then
+            Reference.reachabilityFence(range);
+            if (round >= 0) {
+                bytes[round] = after - before;
+            }
+        }
+        Scenarios.result("cost", "heap-" + name(interval), "bytesPerAlarm", Firing.round(median(bytes) / ADDED, 1));
+    }
+
+    private static long usedAfterGc() {
+        Runtime runtime = Runtime.getRuntime();
+        for (int i = 0; i < 4; i++) {
+            System.gc();
+        }
+        return runtime.totalMemory() - runtime.freeMemory();
     }
 
     /**
