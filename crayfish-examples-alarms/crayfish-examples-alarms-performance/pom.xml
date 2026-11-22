@@ -18,7 +18,7 @@
         <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
         <!-- the versions compared: each one runs in a JVM of its own with its jars from this directory -->
         <alarms.performance.directory>${project.build.directory}/alarms</alarms.performance.directory>
-        <alarms.performance.versions>1.0.4,1.0.5</alarms.performance.versions>
+        <alarms.performance.versions>1.0.5,1.1.0</alarms.performance.versions>
     </properties>
 
     <dependencies>
@@ -80,6 +80,33 @@
                                     <groupId>com.github.sftwnd.crayfish.alarms</groupId>
                                     <artifactId>crayfish-alarms-timerange</artifactId>
                                     <version>1.0.5</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.common</groupId>
+                                    <artifactId>crayfish-common-expectation</artifactId>
+                                    <version>1.4.0</version>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>alarms-1.1.0</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${alarms.performance.directory}/1.1.0</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                                    <artifactId>crayfish-alarms-service</artifactId>
+                                    <version>1.1.0</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.github.sftwnd.crayfish.alarms</groupId>
+                                    <artifactId>crayfish-alarms-timerange</artifactId>
+                                    <version>1.1.0</version>
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>com.github.sftwnd.crayfish.common</groupId>

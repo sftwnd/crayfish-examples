@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Compares the performance of versions of crayfish-alarms, 1.0.4 and 1.0.5 by default. Every scenario of
+ * Compares the performance of versions of crayfish-alarms, 1.0.5 and 1.1.0 by default. Every scenario of
  * {@link Scenarios} runs in a JVM of its own for each version, with the jars of the version on its class path, in
  * rounds of the order A B, B A, A B...; the report shows the medians of the rounds of each version, and is written
  * to target/alarms-performance.md. The arguments are the scenarios: cost, timerange, service and sparse, all of them
@@ -41,7 +41,7 @@ public class VersionsComparison {
         Path classes = Paths.get(System.getProperty("alarms.performance.classes", "target/classes"));
         Path directory = Paths.get(System.getProperty("alarms.performance.directory", "target/alarms"));
         Path report = Paths.get(System.getProperty("alarms.performance.report", "target/alarms-performance.md"));
-        List<String> versions = Arrays.asList(System.getProperty("alarms.performance.versions", "1.0.4,1.0.5").split(","));
+        List<String> versions = Arrays.asList(System.getProperty("alarms.performance.versions", "1.0.5,1.1.0").split(","));
         int rounds = Integer.parseInt(System.getProperty("alarms.performance.rounds", "2"));
         List<String> scenarios = args.length == 0 ? SCENARIOS : Arrays.asList(args);
         for (String scenario : scenarios) {

@@ -26,10 +26,11 @@ public class TimeRangeFilledParallel {
 
     private static final int THREADS = Runtime.getRuntime().availableProcessors() >>> 1;
     private static final int SECONDS = 17;
-    // a time range of crayfish-alarms 1.0.5 takes about 100 bytes of the heap per Instant: the alarms take at most
-    // a half of the heap, and a thread fills at most 750,000 alarms per second of its range
+    // a time range of crayfish-alarms 1.1.0 takes about 36 bytes of the heap per Instant (1.0.5 about 100), 50 are
+    // counted: the alarms take at most a half of the heap, and a thread fills at most 750,000 alarms per second of its
+    // range
     private static final int THREAD_ALARMS_PER_SEQ = (int) Math.min(750_000L,
-            Runtime.getRuntime().maxMemory() / 2 / 100 / Math.max(1, THREADS) / SECONDS);
+            Runtime.getRuntime().maxMemory() / 2 / 50 / Math.max(1, THREADS) / SECONDS);
     private static final AtomicInteger fires = new AtomicInteger(0);
     private static final AtomicInteger fired = new AtomicInteger(0);
     private static final AtomicInteger filled = new AtomicInteger(0);

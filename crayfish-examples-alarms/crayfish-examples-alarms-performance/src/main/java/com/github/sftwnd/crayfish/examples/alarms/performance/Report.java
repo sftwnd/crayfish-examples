@@ -34,7 +34,7 @@ final class Report {
             + "process of `AlarmTimeRangeService` with the default minimalWait fires them. The range has chunks of 1 s; "
             + "an alarm is due 0.5 to 1.5 s after its registration.";
     private static final String SPARSE = "One thread registers 50 alarms per second one by one for 20 s, each due 10 "
-            + "to 100 ms later. The default minimalWait of 1.0.4 is 75 ms, a busy wait; that of 1.0.5 is none.";
+            + "to 100 ms later. The default minimalWait of 1.0.4 is 75 ms, a busy wait; that of 1.0.5 and 1.1.0 is none.";
     private static final String KEPT_UP = "A version keeps up with a rate if it fires at least 95% of it, the 99th "
             + "percentile of the delays is at most 100 ms and every alarm is fired; its steps stop at the first rate it "
             + "does not keep up with.";
