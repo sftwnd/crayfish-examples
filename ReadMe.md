@@ -26,12 +26,34 @@ mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-service -P alarm-ser
 mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-service -P alarm-service-performance exec:java
 ```
 
+### Alarms performance
+
+* [crayfish-alarms 1.0.4, 1.0.5 and 1.1.0 compared](./crayfish-examples-alarms/crayfish-examples-alarms-performance/ReadMe.md):
+  alarms per second, delays, CPU and allocations of the time range and of `AlarmTimeRangeService`
+
+```shell
+mvn -pl ./crayfish-examples-alarms/crayfish-examples-alarms-performance exec:java
+```
+
 ## Common
 
 ### Common CRC examples
 
-* [Common :: CrcModel example](./crayfish-examples-common-crc/ReadMe.md)
+* [Common :: CRC examples](./crayfish-examples-common-crc/ReadMe.md)
 
-```
-mvn -pl ./crayfish-examples-common-crc exec:java
+| Example | Profile |
+|---|---|
+| CrcModel | (none) |
+| Modbus RTU frame | `crc-modbus` |
+| Parallel CRC of a large file | `crc-parallel` |
+| Resume and append | `crc-resume` |
+| Find an unknown CRC | `crc-find` |
+| Catalogue and names | `crc-catalogue` |
+| PNG chunks | `crc-png` |
+| A CRC of your own | `crc-custom` |
+| Bits | `crc-bits` |
+| The JDK classes and the lookup tables | `crc-jdk` |
+
+```shell
+mvn -pl ./crayfish-examples-common-crc -P <profile> exec:java
 ```

@@ -56,7 +56,6 @@ public class AlarmTimeRangeServiceSpeed {
                     lastFire.compareAndSet(null, firstFire.get());
                     logger.info("First fire: {}", firstFire.get());
                 }
-                active.addAndGet(-fired.size());
                 firedAlarms.addAndGet(fired.size());
                 Instant now = Instant.now();
                 fired.forEach(instant -> delay.addAndGet(Duration.between(instant, now).toNanos()));
@@ -73,10 +72,11 @@ public class AlarmTimeRangeServiceSpeed {
                 .forEach(instant -> fillSecond(service, instant));
         logger.info("Filled[{}] for {}", added.get(), Duration.between(start, Instant.now()));
 
-        for (long curr = active.get(); curr > 0 || !timeRange.isComplete(); curr = active.get()) {
-            if (curr == active.get()) {
-                LockSupport.parkNanos(333333333);
-            }
+        // every alarm is fired or rejected: the process registers the requests one by one, and those it has not
+        // registered yet are in none of the counters
+        Instant deadline = Instant.now().plus(Duration.ofMinutes(5));
+        while (firedAlarms.get() + rejected.get() < added.get() && Instant.now().isBefore(deadline)) {
+            LockSupport.parkNanos(333333333);
         }
         LockSupport.parkNanos(Duration.ofSeconds(1).toNanos());
         logger.info("Threads: {}, register: {}, reject: {}, for {}", THREADS, added.get()- rejected.get(), rejected.get(), Duration.between(start, Instant.now()));
@@ -86,7 +86,6 @@ public class AlarmTimeRangeServiceSpeed {
         logger.info("Alarm/sec: {}", Math.round(1000000000.0D * firedAlarms.get() / duration.toNanos()) );
     }
 
-    private static final AtomicLong active = new AtomicLong();
     private static final AtomicLong added = new AtomicLong();
     private static final AtomicLong rejected = new AtomicLong();
     private static void fillSecond(IAlarmService<Instant, Instant> service, Instant instant) {
@@ -95,21 +94,13 @@ public class AlarmTimeRangeServiceSpeed {
         for (long nanos = 0; nanos < 1000000000; nanos += stepNanos) {
             elements.add(instant.plusNanos(nanos));
             if (elements.size() >= BATCH_SIZE) {
-                int size = elements.size();
                 added.addAndGet(elements.size());
-                service.addElements(elements).thenAccept(reject -> {
-                    active.addAndGet(size - reject.size());
-                    rejected.addAndGet(reject.size());
-                });
+                service.addElements(elements).thenAccept(reject -> rejected.addAndGet(reject.size()));
                 elements = new LinkedList<>();
             }
         }
-        int size = elements.size();
         added.addAndGet(elements.size());
-        service.addElements(elements).thenAccept(reject -> {
-            active.addAndGet(size - reject.size());
-            rejected.addAndGet(reject.size());
-        });
+        service.addElements(elements).thenAccept(reject -> rejected.addAndGet(reject.size()));
     }
 
 }
